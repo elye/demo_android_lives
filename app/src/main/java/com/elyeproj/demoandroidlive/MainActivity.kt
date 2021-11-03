@@ -1,8 +1,8 @@
 package com.elyeproj.demoandroidlive
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_main.*
+import com.elyeproj.demoandroidlive.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -10,13 +10,15 @@ class MainActivity : AppCompatActivity() {
         const val SAVE_KEY = "bundle"
     }
 
-    var myVariable = false
-
-    var myVariablePersist = false
+    private var myVariable = false
+    private var myVariablePersist = false
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         if (savedInstanceState != null) {
             myVariablePersist = savedInstanceState.getBoolean(SAVE_KEY)
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         setImage()
 
-        button_update.setOnClickListener {
+        binding.buttonUpdate.setOnClickListener {
             MainApplication.myVariable = true
             myVariable = true
             myVariablePersist = true
@@ -33,21 +35,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setImage() {
-        image_activity.setImageResource(
+        with(binding) {
+            imageActivity.setImageResource(
                 if (myVariable)
                     R.drawable.icon_live
                 else
-                    R.drawable.icon_dead)
-        image_application.setImageResource(
+                    R.drawable.icon_dead
+            )
+            imageApplication.setImageResource(
                 if (MainApplication.myVariable)
                     R.drawable.icon_live
                 else
-                    R.drawable.icon_dead)
-        image_bundle.setImageResource(
+                    R.drawable.icon_dead
+            )
+            imageBundle.setImageResource(
                 if (myVariablePersist)
                     R.drawable.icon_live
                 else
-                    R.drawable.icon_dead)
+                    R.drawable.icon_dead
+            )
+        }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
