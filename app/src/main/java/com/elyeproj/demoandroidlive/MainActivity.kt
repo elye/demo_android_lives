@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.buttonUpdate.setOnClickListener {
             MainApplication.myVariable = true
+            MainApplication.myStoredVariable = true
             myVariable = true
             myVariablePersist = true
             setImage()
@@ -48,8 +49,14 @@ class MainActivity : AppCompatActivity() {
                 else
                     R.drawable.icon_dead
             )
-            imageBundle.setImageResource(
+            imageActivityBundle.setImageResource(
                 if (myVariablePersist)
+                    R.drawable.icon_live
+                else
+                    R.drawable.icon_dead
+            )
+            imageApplicationBundle.setImageResource(
+                if (MainApplication.myStoredVariable)
                     R.drawable.icon_live
                 else
                     R.drawable.icon_dead
