@@ -59,11 +59,32 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:text="Bundle"
+            android:text="Activity Bundle"
             android:textSize="36sp" />
 
         <ImageView
-            android:id="@+id/image_bundle"
+            android:id="@+id/image_activity_bundle"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/icon_live" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            android:text="Application Bundle"
+            android:textSize="36sp" />
+
+        <ImageView
+            android:id="@+id/image_application_bundle"
             android:layout_width="0dp"
             android:layout_height="100dp"
             android:layout_weight="0.5"
