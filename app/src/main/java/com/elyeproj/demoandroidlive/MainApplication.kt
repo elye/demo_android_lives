@@ -23,7 +23,6 @@ class MainApplication: Application(), ActivityLifecycleHandler.LifecycleListener
     }
 
     override fun onApplicationSaveInstanceState(savedInstanceState: Bundle) {
-        super.onApplicationSaveInstanceState(savedInstanceState)
         savedInstanceState.putBoolean(APPLICATION_SAVE_KEY, myStoredVariable)
     }
 }
